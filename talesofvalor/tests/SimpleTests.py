@@ -87,22 +87,44 @@ class TOVTests(unittest.TestCase):
         
 
     def test_login_admin(self):
-        self.test_Login(username="timtp",password="Asti6464")
-        home = page.HomePage(self.driver)
-        home.click_Registration()
-        self.assertTrue("Register for events" in self.driver.page_source)
+        self.test_Login(username="timtp2",password="Asti6464")
 
     def test_click_register(self):
-        self.test_Login(username="timtp",password="Asti6464")
+        self.test_Login(username="timtp2",password="Asti6464")
         home = page.HomePage(self.driver)
         home.click_Registration()
         self.assertTrue("Register for events" in self.driver.page_source)
     
+    def test_click_EventList(self):
+        self.test_Login(username="timtp2",password="Asti6464")
+        home = page.HomePage(self.driver)
+        home.click_EventList()
+        self.assertTrue("<h1>Events</h1>" in self.driver.page_source)
+
+    def test_click_Backgrounds(self):
+        self.test_Login(username="timtp2",password="Asti6464")
+        home = page.HomePage(self.driver)
+        home.click_BasicInfo_Backgrounds()
+        self.assertTrue("<h1>Origins</h1>" in self.driver.page_source)
+
+    def test_click_Headers(self):
+        self.test_Login(username="timtp2",password="Asti6464")
+        home = page.HomePage(self.driver)
+        home.click_BasicInfo_Headers()
+        self.assertTrue("<h1>Headers</h1>" in self.driver.page_source)
+
     def test_click_PELS(self):
-        self.test_Login(username="timtp",password="Asti6464")
+        self.test_Login(username="timtp2",password="Asti6464")
         home = page.HomePage(self.driver)
         home.click_StaffInfo_PELS()
-        
+        self.assertTrue("<h1>PELs</h1>" in self.driver.page_source)
+
+    def test_click_Skills(self):
+        self.test_Login(username="timtp2",password="Asti6464")
+        home = page.HomePage(self.driver)
+        home.click_BasicInfo_Skills()
+        self.assertTrue("<h1>Skills</h1>" in self.driver.page_source)
+
     def tearDown(self) -> None:
         time.sleep(1) #so that you can view the final page for a second before the page closes.
         self.driver.close()
